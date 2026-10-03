@@ -1,0 +1,43 @@
+{
+  "language": "qSpcExe",
+  "symbols": {
+    "{}": {
+      "meaning": "Document references in the QSE file"
+    },
+    "[]": {
+      "meaning": "Data source",
+      "patterns": [
+        {
+          "pattern": ".VARIABLE",
+          "meaning": "Variable reference",
+          "example": "[.AGE]"
+        },
+        {
+          "pattern": "DATASET.",
+          "meaning": "Dataset reference",
+          "example": "[ADSL.]"
+        },
+        {
+          "pattern": "DATASET.VARIABLE",
+          "meaning": "Dataset and variable reference",
+          "example": "[ADSL.AGE]"
+        }
+      ]
+    },
+    "@": {
+      "meaning": "Reference to a particular document or data source"
+    },
+    "()": {
+      "meaning": "Reserved for future use"
+    },
+    "/xx/": {
+      "meaning": "Short codes for instructions"
+    },
+    "#": {
+      "meaning": "Reserved for future use"
+    },
+    ":": {
+      "meaning": "Indicates the end of an instruction"
+    }
+  }
+}
