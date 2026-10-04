@@ -11,21 +11,24 @@ Keep in mind that this is V0.1.
 [ ] A file parser is in development. 
 
 ## Licensing
-GPL V3 applies - In short. You've received it free. You give it away from or pay.
+GPL V3 applies - In short. You've received it free. You give it away for free or pay.
 
 ## What is it
-AI's work on prompts and most AI currently have a limit on the number of files that can be shared with it. Prompt's will be the new programming code for the future - a 6GL of sorts. The purpose behind QSE is to have a prompt generator that can be read by AI and that would be human readable at the same time.
+AI's work on prompts and most AI currently have a limit on the number of files that can be shared with it. Prompt's will be the new programming code for the future - a 6GL of sorts. The purpose behind QSE is to have a prompt generator that can be read by AI and that is more human friendly, and industry safe. Ambiguity snd vagueness is not something Pharma embraces.
 
-Part of the constraints faced by programmers in the Pharma industry is specification. These have to be written in a very specific manner which is not sufficient for AI. As this is V0.1 the primary problem to address is prompts
+Part of the constraints faced by programmers in the Pharma industry is specification. These have to be written in a very specific manner which is not sufficient for AI. We tell what's be done not how, which is what will be needed for AI. The SAP and ADRG supports this but leaves programmers clamoring through multiple files leading to a lose in productivity.
+
+As this is V0.1 the primary problem to address is prompts or instructions.
 
 ## Prompt Format
-The suggested format for a prompt is a aligning with markdown where as the language itself will be driven by a JSON file.
+The suggested format for a prompt is aligning with markdown where as the language itself will be driven by a JSON file.
 
 ### The Language
 As AI will be doing all the heavy lifting the language is nothing more than a JSON file.
 
 #### Language Format file (JSON)
-As it will involve a lot of typing the idea is to keep keyboard movements to the minimum and aviod any moues input.
+As it will involve a lot of typing the idea is to keep keyboard movements to the minimum and limit mouse input.
+
 - `{}` - Document references in the QSE file
 - `[]` - Data source:
     > - Values starting with . is a variables `[.AGE]`
@@ -33,18 +36,21 @@ As it will involve a lot of typing the idea is to keep keyboard movements to the
     > - Values with . is a dataset and variable `[ADSL.AGE]`
 - `@` - References to a particular document or data source.
     ```
-      Using the @<> 
+      Using the @<variable or data>
     ```
 - `()` - Reserved for future use
+- `<>` - Reserved for future use
 - `/xxx/` - Short codes for instructions
 - `#` - Reserved for future uses
-- `:`
+- `:xxx:` - Is a definition description.
 
 ### QSE File format
-The propose format is as follow:                          
+The propose format is as follow:    
+Short names exists to reduce tokens and reduce typing.
+             
 |Long Name         |Short Name|Description                           |
 |---               |---       |---                                   |
-|Purpose           |/PU/      |What is the purpose of the instruction|
+|Purpose           |/PU/      |Description of the instruction|
 |Language Target   |/LN/      |SAS/R/Python                          | 
 |Rules + datatype  |/RD/      |Rules to be applied                   |
 |When              |When      |What to do if certain scenarios wasn't met|
@@ -104,6 +110,7 @@ For qSpecExe testing, I'd therefore flag two specification queries: AGE = 12 bou
 
 ## Flow chart
 Flow chart based on ADaM specifications.
+
 ```mermaid
 flowchart TD
   s(SAP)--> A(Annotated Shells)
