@@ -1,7 +1,8 @@
 # Details
+Here's more details on how it all fits together.
 
-
-## Flow Charts
+## Flow Chart
+A more detailed look at how the proposed method will work.
 
 ```mermaid
 flowchart TD
@@ -36,7 +37,7 @@ The Language file is nothing more than a setup file on how the "Setup md file us
 - `#` - Reserved for future uses
 - `:xxx:` - Is a definition description.
 
-### QSE File format
+## Instruction File format
 The propose format is as follow:    
 Short names exists to reduce tokens and reduce typing.
              
@@ -54,11 +55,12 @@ Short names exists to reduce tokens and reduce typing.
 |Verify            |/VR/      |When data issues are encountered, you'd place the details here.|
 |Ambiguity         |/AB/      |Anything that needs human eyes list the details   |
 
+Because the file consists of information that is already present in the specifications file, it leave it open for automation.
 
-#### An example of the file
+### Example of the instruction file
 
 ```
-START
+OPEN
   Purpose:
    To derive the age of a person
   
@@ -86,5 +88,7 @@ START
 
   Ambiguity
    Missing AGE should be queried.
-END   
+CLOSE   
 ```
+
+## 
