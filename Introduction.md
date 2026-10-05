@@ -7,8 +7,9 @@ QSE - Quality Spec Execution is the first attempt to make AI and statistical pro
 
 Keep in mind that this is V0.1.
 
-## Still to come
-[ ] A file parser is in development. 
+## ToDo
+ - [ ] A file parser (in development)
+ - [ ] Test cases 
 
 ## Licensing
 GPL V3 applies - In short. You've received it free. You give it away for free or pay.
@@ -20,82 +21,15 @@ Part of the constraints faced by programmers in the Pharma industry is what can 
 
 As this is V0.1 the primary problem to address is prompts or instructions.
 
-## Prompt Format
-The suggested format for a prompt is aligning with markdown where as the language itself will be driven by a JSON file.
-
 ### The Language
-As AI will be doing all the heavy lifting the language is nothing more than a JSON file.
-
-#### Language Format file (JSON)
-As it will involve a lot of typing the idea is to keep keyboard movements to the minimum and limit mouse input.
-
-- `{}` - Document references in the QSE file
-- `[]` - Data source:
-    > - Values starting with . is a variables `[.AGE]`
-    > - Values ending with . is a dataset `[ADSL.]`
-    > - Values with . is a dataset and variable `[ADSL.AGE]`
-- `@` - References to a particular document or data source.
-    ```
-      Using the @<variable or data>
-    ```
-- `()` - Reserved for future use
-- `<>` - Reserved for future use
-- `/xxx/` - Short codes for instructions
-- `#` - Reserved for future uses
-- `:xxx:` - Is a definition description.
+As AI will be doing all the heavy lifting the language is nothing more than a JSON file. The Language file is nothing more than a setup file on how the "Setup md file used by AI" should be interpreted. See details.
 
 ### QSE File format
-The propose format is as follow:    
-Short names exists to reduce tokens and reduce typing.
-             
-|Long Name         |Short Name|Description                           |
-|---               |---       |---                                   |
-|Purpose           |/PU/      |Description of the instruction|
-|Language Target   |/LN/      |SAS/R/Python                          | 
-|Rules + datatype  |/RD/      |Rules to be applied                   |
-|When              |When      |What to do if certain scenarios wasn't met|
-|Out variable      |/OUT/     |The name of the output variable.          |
-|Constraint        |/CN/      |Any constraints that should be applied.   |
-|Trace             |TRACE     |What variables should be used.            |
-|Verify            |/VR/      |When data issues are encountered, you'd place the details here.|
-|Ambiguity         |/AB/      |Anything that needs human eyes list the details here |
-
-#### Here is an example of the file
-
-```
-  Purpose:
-   To derive the age of a person
-  
-  Language Target:
-   Write the code in SAS for me.
-
-  Out Variable:
-   agegr1
-
-  Rules + datatype:
-   agegr1 = [ADSL.AGE] between 2 and 12 is 1
-   agegr1 = [ADSL.AGE] between 12 and 45 is 2
-
-  When: 
-  Missing AGE @/OUT/ is missing
-    
-  Constraint
-  AGE > 2 and AGE <=80
-
-  Trace:
-  [ADSL.AGE]
-
-  Verify
-    AGE is > 0 and does not contain character values
-
-  Ambiguity
-   Missing AGE should be queried.
-```
+The file by design is very similar to a markdown file. It is based on a predefined structure to ensure that creation and reading is consistent. To ensure that the files supplied to AI is kept to a minimum you can have multiple instructions in one file. See details
 
 ### Executing in AI
 Run the following command in AI: 
 Using qSpcExe_symbols.json executed the instruction in ADSL_age.md
-
 
 #### Results
 The results should generate but also importantly highlight the following:
