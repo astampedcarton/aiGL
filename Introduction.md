@@ -15,7 +15,7 @@ Keep in mind that this is V0.1.
 GPL V3 applies - In short. You've received it free. You give it away for free or pay.
 
 ## What is it
-AI's work on prompts and most AI currently have a limit on the number of files that can be shared with it. Prompt's will be the new programming code for the future - a 6GL of sorts. The purpose behind QSE is to have a prompt generator that can be read by AI and that is more human friendly, and industry safe. Ambiguity and vagueness is not something Pharma embraces.
+AI's work on prompts and most AI currently have a limit on the number of files that can be shared with it. Prompt's will be the new programming code for the future - an aiGL of sorts. The purpose behind QSE is to have a prompt generator that can be read by AI and that is more human friendly, and industry safe. Ambiguity and vagueness is not something Pharma embraces.
 
 Part of the constraints faced by programmers in the Pharma industry is what can go into a specification. These have to be written in a very specific manner which is not sufficient for AI. We tell what's be done not how, which is not what will be needed for AI. The SAP and ADRG supports this but leaves programmers clamoring through multiple files leading to a lose in productivity, and opening the door to vagueness and Ambiguity.
 
