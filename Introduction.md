@@ -24,6 +24,11 @@ As this is V0.1 the primary problem to address is prompts or instructions.
 ### The Language
 As AI will be doing all the heavy lifting the language is nothing more than a JSON file. The Language file is nothing more than a setup file on how the "Setup md file used by AI" should be interpreted. See details.
 
+#### Naming convention
+Any alpha numeric value.
+No spacing in between
+Substitute space with _
+
 ### QSE File format
 The file by design is very similar to a markdown file. It is based on a predefined structure to ensure that creation and reading is consistent. To ensure that the files supplied to AI is kept to a minimum you can have multiple instructions in one file. See details
 

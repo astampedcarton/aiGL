@@ -13,7 +13,7 @@ flowchart TD
   a-->H1[Creates the specs]
   data(ADaM/SDTM/RAW)-->H1 -->b[Reviewed for compliance]-->c[AI]
   
-  b-->b1(Files for AI)-->L1[Language Setup - Preset]-->f1[Setup md file used by AI]
+  b1(Files for AI)-->L1[Language Setup - Preset]-->f1[Setup md file used by AI]
   f1-->c
 
 ```
@@ -45,11 +45,13 @@ Short names exists to reduce tokens and reduce typing.
 |---               |---       |---                                               |
 |OPEN              |OPEN      |Start of the instruction                          |
 |CLOSE             |CLOSE     |End of the instruction                            |
+|FINAL             |FINAL     |The final instruction that must be executed       |
 |Purpose           |/PU/      |Description of the instruction                    |
 |Language Target   |/LN/      |SAS/R/Python                                      | 
+|Input Data        |/IN/      |The input datasets that must be used.             |
 |Rules + datatype  |/RD/      |Rules to be applied                               |
 |When              |When      |What to do if certain scenarios wasn't met        |
-|Out variable      |/OUT/     |The name of the output variable.                  |
+|Out variable      |/OT/     |The name of the output variable.                  |
 |Constraint        |/CN/      |Any constraints that should be applied.           |
 |Trace             |TRACE     |What variables should be used.                    |
 |Verify            |/VR/      |When data issues are encountered, you'd place the details here.|

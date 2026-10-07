@@ -2,42 +2,71 @@
   "language": "qSpcExe",
   "symbols": {
     "{}": {
-      "meaning": "Document references in the QSE file"
+      "meaning": "Document references in the QSE file",
+      "pattern": "\\{[^{}]*\\}",
+      "example": "{any value}"
     },
     "[]": {
-      "meaning": "Data source",
+      "meaning": "Data reference",
+      "semantics": "Identifies data objects referenced by the specification. Interpret the enclosed value according to the matching pattern.",
       "patterns": [
         {
           "pattern": ".VARIABLE",
           "meaning": "Variable reference",
+          "semantics": "References VARIABLE without explicitly specifying its dataset.",
           "example": "[.AGE]"
         },
         {
           "pattern": "DATASET.",
           "meaning": "Dataset reference",
+          "semantics": "References DATASET as a dataset.",          
           "example": "[ADSL.]"
         },
         {
           "pattern": "DATASET.VARIABLE",
           "meaning": "Dataset and variable reference",
+          "semantics": "References VARIABLE from DATASET.",          
           "example": "[ADSL.AGE]"
         }
       ]
     },
     "@": {
-      "meaning": "Reference to a particular document or data source"
+      "meaning": "Reference to a particular document or data source",      
+      "pattern": "@[A-Za-z][A-Za-z0-9_]*(?:\\.[A-Za-z][A-Za-z0-9_]*)?",
+      "examples": [
+        "@Library.VAR",
+        "@Library",
+        "@Var"
+      ]
     },
     "()": {
       "meaning": "Reserved for future use"
     },
     "/xx/": {
-      "meaning": "Short codes for instructions"
+      "meaning": "Short codes for instructions",
+      "pattern": "/[A-Za-z0-9]{2}/",
+      "example": "/AB/"
     },
     "#": {
       "meaning": "Reserved for future use"
     },
     ":": {
-      "meaning": "Indicates the end of an instruction"
+      "meaning": "Indicates the end of an instruction",
+      "pattern": "(?:OPEN|CLOSE|FINAL|PURPOSE|LANGUAGE_TARGET|Input_Data|Rules|When|Out_Variable|Constraint|Trace|Verify|Ambiguity|):",
+      "phrases": [{"phrase" : "OPEN"           , "meaning" : "Start of a specification block" ,         "semantics": "Marks the beginning of a specification block."},
+                  {"phrase" : "CLOSE"          , "meaning" : "End of a specification block"   ,         "semantics": "Marks the end of a specification block."},
+                  {"phrase" : "FINAL"          , "meaning" : "Final instructions after all blocks",     "semantics": "Marks the end of file and the final instruction to be executed."},
+                  {"phrase" : "PURPOSE"        , "meaning" : "Objective of the block",                  "semantics": "Defines the intended objective of the specification."},
+                  {"phrase" : "LANGUAGE_TARGET", "meaning" : "Target Language. SAS, R, Python",         "semantics": "Defines the language in which the executable output must be generated."},
+                  {"phrase" : "Input_Data"     , "meaning" : "Input data",                              "semantics": "Identifies data used as input to the specification."},
+                  {"phrase" : "Rules"          , "meaning" : "Execution rules",                         "semantics": "Defines logic that must be implemented in the generated output."},
+                  {"phrase" : "When"           , "meaning" : "Applicability of condition",              "semantics": "Defines conditions under which the associated instruction applies."},
+                  {"phrase" : "Out_Variable"   , "meaning" : "Variable to be produced by the block",    "semantics": "Identifies the variable produced or modified by the specification."},
+                  {"phrase" : "Constraint"     , "meaning" : "Execution constraint",                    "semantics": "Defines requirements that the generated implementation must not violate."},
+                  {"phrase" : "Trace"          , "meaning" : "Tracability requirements",                "semantics": "Identifies information that must be traceable to referenced specification inputs."},
+                  {"phrase" : "Verify"         , "meaning" : "Verification requirements",               "semantics": "Defines conditions that must be checked when evaluating the resulting implementation."},
+                  {"phrase" : "Ambiguity"      , "meaning" : "Unresolved requirements",                 "semantics": "Identifies conditions that must not be resolved by assumption and must instead be reported for clarification."}
+      ]
     }
   }
 }
