@@ -22,14 +22,14 @@ flowchart TD
 The Language file is nothing more than a setup file on how the "Setup md file used by AI" should be interpreted. 
 - `OPEN` - Indicates the start of an instruction 
 - `CLOSE` - Indicates the start of an instruction 
-- `{}` - Document references in the QSE file
-- `[]` - Data source:
-   > - Values starting with . is a variables `[.AGE]`
-   > - Values ending with . is a dataset `[ADSL.]`
-   > - Values with . is a dataset and variable `[ADSL.AGE]`
-- `@` - References to a particular document or data source.
+- `{}` - Document references that is part of the AI Chat
+- `[]` - Indicates a data source:
+   > - Values starting with `.` is a variables `[.AGE]`
+   > - Values ending with `.` is a dataset `[ADSL.]`
+   > - Values containing a `.` is a dataset and variable `[ADSL.AGE]`
+- `@` - References to a particular document or data source
     ```
-      Using the @<variable or data>
+      e.g. Using the @<variable or data>
     ```
 - `()` - Reserved for future use
 - `<>` - Reserved for future use
