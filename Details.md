@@ -1,4 +1,5 @@
-# Details
+# Details (aiGL) 
+![alt text](Designer-1.png)
 Here's more details on how it all fits together.
 
 ## Flow Chart

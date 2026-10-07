@@ -1,4 +1,4 @@
-# QSE 
+# QSE (aiGL) 
  
 ## Introduction
 As AI is gaining tracktion, statistical programming in the Pharma Industry is evolving, and we need to evolve with it.
