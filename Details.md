@@ -13,7 +13,7 @@ flowchart TD
   a-->H1[Creates the specs]
   data(ADaM/SDTM/RAW)-->H1 -->b[Reviewed for compliance]-->c[AI]
   
-  b1(Files for AI)-->L1[Language Setup - Preset]-->f1[Setup md file used by AI]
+  b-->b1(Files for AI)-->L1[Language Setup - Preset]-->f1[Setup md file used by AI]
   f1-->c
 
 ```
