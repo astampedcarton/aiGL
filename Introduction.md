@@ -31,6 +31,14 @@ Any alpha numeric value.
 No spacing in between
 Substitute space with _
 
+### When to use
+This is a question not everyone asks, but is a very important question. Almost any language can be used to solve a problem. The question that needs answering is if it's the right tool for the job.
+
+If you have for example `Set to Y when Age < 12` and there is no other significance around it, you might actually be wasting time.
+if you have for example `Set to Y when Age < 12 and is from South Africa with parents aged >= 30. Flagging parents with age < 30 if the age is 12` you have a proper use.
+
+The general rule to apply is if it's got multiple dependencies you have a good use case. 
+
 ### aiGL File format
 The file by design is very similar to a markdown file. It is based on a predefined structure to ensure that creation and reading is consistent. To ensure that the files supplied to AI is kept to a minimum you can have multiple instructions in one file. See details
 
