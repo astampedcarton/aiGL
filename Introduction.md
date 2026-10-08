@@ -1,4 +1,4 @@
-# QSE (aiGL) 
+# aiGL - (ai Generation language)
  
 ## Introduction
 As AI is gaining tracktion, statistical programming in the Pharma Industry is evolving, and we need to evolve with it.
@@ -12,7 +12,7 @@ Keep in mind that this is V0.1.
  - [ ] Test cases 
 
 ## Licensing
-GPL V3 applies - In short. You've received it free. You give it away for free or pay.
+Apache License 2.0 spplies.
 
 ## What is it
 AI's work on prompts and most AI currently have a limit on the number of files that can be shared with it. Prompt's will be the new programming code for the future - an aiGL of sorts. The purpose behind QSE is to have a prompt generator that can be read by AI and that is more human friendly, and industry safe. Ambiguity and vagueness is not something Pharma embraces.
