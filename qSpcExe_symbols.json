@@ -1,8 +1,8 @@
 {
-  "language": "qSpcExe",
+  "language": "aiGL",
   "symbols": {
     "{}": {
-      "meaning": "Document references in the QSE file",
+      "meaning": "Document references in the file",
       "pattern": "\\{[^{}]*\\}",
       "example": "{any value}"
     },
