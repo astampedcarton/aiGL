@@ -5,18 +5,19 @@ Here's more details on how it all fits together.
 ## Flow Chart
 A more detailed look at how the proposed method will work.
 
+## Current order or work
 ```mermaid
-flowchart TD
-  a@{ shape: docs, label: "Study Documentation"}
-  b@{ shape: docs, label: "AI Files"}
+flowchart LR
+  h[Human]-->i[Prompt]-->A[AI]
+```
 
-  data@{ shape: cyl, label: "Database" }
-  a-->H1[Creates the specs]
-  data(ADaM/SDTM/RAW)-->H1 -->b[Reviewed for compliance]-->c[AI]
-  
-  b1(Files for AI)-->L1[Language Setup - Preset]-->f1[Setup md file used by AI]
-  f1-->c
-
+## aiGL
+```mermaid
+flowchart LR
+  h(Human)-->i[Structured Instructions]
+  h-->i1[Language/Structure setup]
+  i-->A[AI]
+  i1-->A
 ```
 
 ## Language file
@@ -42,21 +43,22 @@ The Language file is nothing more than a setup file on how the "Setup md file us
 The propose format is as follow:    
 Short names exists to reduce tokens and reduce typing.
              
-|Long Name         |Short Name|Description                                       |
-|---               |---       |---                                               |
-|OPEN              |OPEN      |Start of the instruction                          |
-|CLOSE             |CLOSE     |End of the instruction                            |
-|FINAL             |FINAL     |The final instruction that must be executed       |
-|Purpose           |/PU/      |Description of the instruction                    |
-|Language Target   |/LN/      |SAS/R/Python                                      | 
-|Input Data        |/IN/      |The input datasets that must be used.             |
-|Rules + datatype  |/RD/      |Rules to be applied                               |
-|When              |When      |What to do if certain scenarios wasn't met        |
-|Out variable      |/OT/     |The name of the output variable.                  |
-|Constraint        |/CN/      |Any constraints that should be applied.           |
-|Trace             |TRACE     |What variables should be used.                    |
+|Long Name         |Short Name|Description                                                    |
+|---               |---       |---                                                            |
+|OPEN              |OPEN      |Start of the instruction                                       |
+|CLOSE             |CLOSE     |End of the instruction                                         |
+|FINAL             |FINAL     |The final instruction that must be executed                    |
+|Purpose           |/PU/      |Description of the instruction                                 |
+|Language Target   |/LN/      |SAS/R/Python                                                   | 
+|Exe_target        |/ET/      |What is the execution target. GPT, SQL, C#, etc.               |
+|Input Data        |/IN/      |The input datasets that must be used.                          |
+|Rules + datatype  |/RD/      |Rules to be applied                                            |
+|When              |When      |What to do if certain scenarios wasn't met                     |
+|Out variable      |/OT/      |The name of the output variable.                                |
+|Constraint        |/CN/      |Any constraints that should be applied.                        |
+|Trace             |TRACE     |What variables should be used.                                 |
 |Verify            |/VR/      |When data issues are encountered, you'd place the details here.|
-|Ambiguity         |/AB/      |Anything that needs human eyes list the details   |
+|Ambiguity         |/AB/      |Anything that needs human eyes list the details                |
 
 Because the file consists of information that is already present in the specifications file, it leave it open for automation.
 

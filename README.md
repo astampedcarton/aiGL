@@ -14,15 +14,15 @@ As programmers we need to face the fact that we'll not be able to match AI's cap
 
 aiGL simply taps into both sphere's to harness what both are good at enabling us to do more do it faster while striving for quality at the same time.
 
-## Current setup
+## Current order or work
 ```mermaid
-flowchart TD
+flowchart LR
   h(Human)-->i(Prompt)-->A(AI)
 ```
 
 ## aiGL
 ```mermaid
-flowchart TD
+flowchart LR
   h(Human)-->i(Structured Instructions)
   h-->i1(Language/Structure setup)
   i-->A(AI)

@@ -1,6 +1,6 @@
 {
   "language": "aiGL",
-  "symbols": {
+   "symbols": {
     "{}": {
       "meaning": "Document references in the file",
       "pattern": "\\{[^{}]*\\}",
@@ -36,7 +36,8 @@
       "examples": [
         "@Library.VAR",
         "@Library",
-        "@Var"
+        "@Var",
+        "@Document"
       ]
     },
     "()": {

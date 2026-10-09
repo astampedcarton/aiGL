@@ -5,6 +5,8 @@ As AI is gaining traction. No industry has been left untouched. We've started em
 
 It all started with the idea of Quality Spec Execution, but quickly evolved to aiGL. As this is a platform/framework rather than a program.
 
+Clearer instructions means less time spend talking to AI. 
+
 Keep in mind that this is V0.1.
 
 ## ToDo
