@@ -31,7 +31,7 @@
       ]
     },
     "@": {
-      "meaning": "Reference to a particular document or data source",      
+      "meaning": "Reference to a particular document or data source that is defined in the Input_Data section.",      
       "pattern": "@[A-Za-z][A-Za-z0-9_]*(?:\\.[A-Za-z][A-Za-z0-9_]*)?",
       "examples": [
         "@Library.VAR",
@@ -48,25 +48,73 @@
       "pattern": "/[A-Za-z0-9]{2}/",
       "example": "/AB/"
     },
+    "D:": {
+      "meaning": "Can only be present in the Input_Data section. It is used to define a Document that can be referenced in the specification.",
+      "pattern": "D:/[A-Za-z0-9]",
+      "example": "D: Document_Name"
+    },    
     "#": {
       "meaning": "Reserved for future use"
     },
     ":": {
       "meaning": "Indicates the end of an instruction",
       "pattern": "(?:OPEN|CLOSE|FINAL|PURPOSE|LANGUAGE_TARGET|Input_Data|Rules|When|Out_Variable|Constraint|Trace|Verify|Ambiguity|):",
-      "phrases": [{"phrase" : "OPEN"           , "meaning" : "Start of a specification block" ,         "semantics": "Marks the beginning of a specification block."},
-                  {"phrase" : "CLOSE"          , "meaning" : "End of a specification block"   ,         "semantics": "Marks the end of a specification block."},
-                  {"phrase" : "FINAL"          , "meaning" : "Final instructions after all blocks",     "semantics": "Marks the end of file and the final instruction to be executed."},
-                  {"phrase" : "PURPOSE"        , "meaning" : "Objective of the block",                  "semantics": "Defines the intended objective of the specification."},
-                  {"phrase" : "LANGUAGE_TARGET", "meaning" : "Target Language. SAS, R, Python",         "semantics": "Defines the language in which the executable output must be generated."},
-                  {"phrase" : "Input_Data"     , "meaning" : "Input data",                              "semantics": "Identifies data used as input to the specification."},
-                  {"phrase" : "Rules"          , "meaning" : "Execution rules",                         "semantics": "Defines logic that must be implemented in the generated output."},
-                  {"phrase" : "When"           , "meaning" : "Applicability of condition",              "semantics": "Defines conditions under which the associated instruction applies."},
-                  {"phrase" : "Out_Variable"   , "meaning" : "Variable to be produced by the block",    "semantics": "Identifies the variable produced or modified by the specification."},
-                  {"phrase" : "Constraint"     , "meaning" : "Execution constraint",                    "semantics": "Defines requirements that the generated implementation must not violate."},
-                  {"phrase" : "Trace"          , "meaning" : "Tracability requirements",                "semantics": "Identifies information that must be traceable to referenced specification inputs."},
-                  {"phrase" : "Verify"         , "meaning" : "Verification requirements",               "semantics": "Defines conditions that must be checked when evaluating the resulting implementation."},
-                  {"phrase" : "Ambiguity"      , "meaning" : "Unresolved requirements",                 "semantics": "Identifies conditions that must not be resolved by assumption and must instead be reported for clarification."}
+      "phrases": [{"phrase" : "OPEN"           , 
+                   "meaning" : "Start of a specification block" ,         
+                   "semantics": "Marks the beginning of a specification block. More than one block may be defined in a single file."
+                  },
+                  {"phrase" : "CLOSE"          , 
+                   "meaning" : "End of a specification block"   ,         
+                   "semantics": "Marks the end of a specification block. More than one block may be defined in a single file."
+                  },
+                  {"phrase" : "FINAL"          , 
+                   "meaning" : "Final instructions after all blocks",     
+                   "semantics": "Marks the end of file and the final instruction to be executed. Only one FINAL instruction may be defined in a single file. Stop Execution after the FINAL instruction is processed. Do not process any instructions if more than one FINAL instruction is defined."
+                  },
+                  {"phrase" : "PURPOSE"        , 
+                   "meaning" : "Objective of the block",                  
+                   "semantics": "Defines the intended objective of the specification."
+                  },
+                  {"phrase" : "LANGUAGE_TARGET", 
+                   "meaning" : "Target Language. SAS, R, Python",         
+                   "semantics": "Defines the language in which the executable output must be generated. There can be only one LANGUAGE_TARGET instruction in a single specification block."
+                  },
+                  {"phrase" : "Input_Data"     , 
+                   "meaning" : "Input data",                              
+                   "semantics": "Identifies data used as input to the specification. The data may be referenced by name or by a data object reference."
+                  },
+                  {"phrase" : "Rules"          , 
+                   "meaning" : "Execution rules",                         
+                   "semantics": "Defines logic that must be implemented in the generated output."
+                  },
+                  {"phrase" : "When"           , 
+                   "meaning" : "Applicability of condition",              
+                   "semantics": "Defines conditions under which the associated instruction applies."
+                  },
+                  {"phrase" : "Out_Variable"   , 
+                   "meaning" : "Variable to be produced by the block",    
+                   "semantics": "Identifies the variable produced or modified by the specification."
+                  },
+                  {"phrase" : "Constraint"     , 
+                   "meaning" : "Execution constraint",                    
+                   "semantics": "Defines requirements that the generated implementation must not violate."
+                  },
+                  {"phrase" : "Trace"          , 
+                   "meaning" : "Tracability requirements",                
+                   "semantics": "Identifies information that must be traceable to referenced specification inputs."
+                  },
+                  {"phrase" : "Verify"         , 
+                   "meaning" : "Verification requirements",               
+                   "semantics": "Defines conditions that must be checked when evaluating the resulting implementation."
+                  },
+                  {"phrase" : "Report"         , 
+                   "meaning" : "Reporting requirements",                  
+                   "semantics": "Defines conditions that must be reported on for variables. The reporting should be in the form of a report."
+                  },
+                  {"phrase" : "Ambiguity"      , 
+                   "meaning" : "Unresolved requirements",                 
+                   "semantics": "Identifies conditions that must not be resolved by assumption and must instead be reported for clarification."
+                  }
       ]
     }
   }

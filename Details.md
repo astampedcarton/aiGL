@@ -43,24 +43,28 @@ The Language file is nothing more than a setup file on how the "Setup md file us
 The propose format is as follow:    
 Short names exists to reduce tokens and reduce typing.
              
-|Long Name         |Short Name|Description                                                    |
-|---               |---       |---                                                            |
-|OPEN              |OPEN      |Start of the instruction                                       |
-|CLOSE             |CLOSE     |End of the instruction                                         |
-|FINAL             |FINAL     |The final instruction that must be executed                    |
-|Purpose           |/PU/      |Description of the instruction                                 |
-|Language Target   |/LN/      |SAS/R/Python                                                   | 
-|Exe_target        |/ET/      |What is the execution target. GPT, SQL, C#, etc.               |
-|Input Data        |/IN/      |The input datasets that must be used.                          |
-|Rules + datatype  |/RD/      |Rules to be applied                                            |
-|When              |When      |What to do if certain scenarios wasn't met                     |
-|Out variable      |/OT/      |The name of the output variable.                                |
-|Constraint        |/CN/      |Any constraints that should be applied.                        |
-|Trace             |TRACE     |What variables should be used.                                 |
-|Verify            |/VR/      |When data issues are encountered, you'd place the details here.|
-|Ambiguity         |/AB/      |Anything that needs human eyes list the details                |
+|Long Name         |Short Name|Description                                                          |
+|---               |---       |---                                                                  |
+|OPEN              |OPEN      |Start of the instruction                                             |
+|CLOSE             |CLOSE     |End of the instruction                                               |
+|FINAL             |FINAL     |The final instruction that must be executed                          |
+|Purpose           |/PU/      |Description of the instruction                                       |
+|Language_Target   |/LN/      |SAS/R/Python                                                         | 
+|Exe_target        |/ET/      |What is the execution target. GPT, SQL, C#, etc.                     |
+|Input_Data        |/IN/      |The input datasets or documentation that must be used.               |
+|Rules             |/RD/      |Rules to be applied                                                  |
+|When              |When      |What to do if certain scenarios wasn't met                           |
+|Out_variable      |/OT/      |The name of the output variable.                                     |
+|Constraint        |/CN/      |Any constraints that should be applied.                              |
+|Trace             |TRACE     |What variables should be used.                                       |
+|Verify            |/VR/      |When data issues are encountered, you'd place the details here.      |
+|Report            |/RP/      |Details of what needs to be written, which will go into Documentation|
+|Ambiguity         |/AB/      |Anything that needs human eyes list the details                      |
 
 Because the file consists of information that is already present in the specifications file, it leave it open for automation.
+
+### Extra notes on the language file
+You can have only one FINAL entry.
 
 ### Example of the instruction file
 

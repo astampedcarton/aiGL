@@ -33,11 +33,11 @@ Open:
     Derive the Baseline Flag
   Language Target: Write the code in SAS for me
   Input_data:
-    ADLB
+    ADLBq
   Out_Variable : 
     ABLFL
   Rules: 
-    Flag as 'Y' the last OBS per PARAMCD where the ADT is <= TRTSDT
+    Flag as 'Y' the last OBS per PARAMCD wqhere the ADT is <= TRTSDT
   When : 
     Only derive if the ADT and TRTSDT is both not missing
   Constraint: 
