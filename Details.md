@@ -22,8 +22,9 @@ flowchart LR
 
 ## Language file
 The Language file is nothing more than a setup file on how the "Setup md file used by AI" should be interpreted. 
-- `OPEN` - Indicates the start of an instruction 
-- `CLOSE` - Indicates the start of an instruction 
+- `OPEN` - Indicates the start of an instruction block
+- `CLOSE` - Indicates the start of an instruction block
+- `Final` - Indicates the end of the instructions in the file
 - `{}` - Document references that is part of the AI Chat
 - `[]` - Indicates a data source:
    > - Values starting with `.` is a variables `[.AGE]`
@@ -43,25 +44,24 @@ The Language file is nothing more than a setup file on how the "Setup md file us
 The propose format is as follow:    
 Short names exists to reduce tokens and reduce typing.
              
-|Long Name         |Short Name|Description                                                          |
-|---               |---       |---                                                                  |
-|OPEN              |OPEN      |Start of the instruction                                             |
-|CLOSE             |CLOSE     |End of the instruction                                               |
-|FINAL             |FINAL     |The final instruction that must be executed                          |
-|Purpose           |/PU/      |Description of the instruction                                       |
-|Language_Target   |/LN/      |SAS/R/Python                                                         | 
-|Exe_target        |/ET/      |What is the execution target. GPT, SQL, C#, etc.                     |
-|Input_Data        |/IN/      |The input datasets or documentation that must be used.               |
-|Rules             |/RD/      |Rules to be applied                                                  |
-|When              |When      |What to do if certain scenarios wasn't met                           |
-|Out_variable      |/OT/      |The name of the output variable.                                     |
-|Constraint        |/CN/      |Any constraints that should be applied.                              |
-|Trace             |TRACE     |What variables should be used.                                       |
-|Verify            |/VR/      |When data issues are encountered, you'd place the details here.      |
-|Report            |/RP/      |Details of what needs to be written, which will go into Documentation|
-|Ambiguity         |/AB/      |Anything that needs human eyes list the details                      |
+|Long Name         |Short Name|Description                                                |
+|---               |---       |---                                                        |
+|OPEN <>           |          | Start of a specification block followed by the block name.|
+|CLOSE <>          |          | End of a specification block followed by the block name.  |
+|FINAL             |          | Post-processing instructions                              |
+|PURPOSE           |/PU/      | Objective of the block                                    |
+|LANGUAGE_TARGET   |/LN/      | Target Language. SAS, R, Python                           |
+|Input_Data        |/ET/      | Input data                                                |
+|Logic             |/LC/      | Execution rules                                           |
+|Output            |/OT/      | Variable or output to be produced by the block            |
+|Validation        |/VL/      | Validation rules                                          |
+|Notes             |/NT/      | General instructions or notes for the block               |
 
 Because the file consists of information that is already present in the specifications file, it leave it open for automation.
+
+`Open <>: Close <>:` was selected to allow for better file viewing. When a file contains multiple instructions you can collapse the file to have a better view.
+
+`output:` was selected over output_var to broaden the reach should the result needed not be a variable. This might change in the future.
 
 ### Extra notes on the language file
 You can have only one FINAL entry.
@@ -69,35 +69,29 @@ You can have only one FINAL entry.
 ### Example of the instruction file
 
 ```
-OPEN
+OPEN AGE_GRP:
   Purpose:
    To derive the age of a person
   
-  Language Target:
+  Language_Target:
    Write the code in SAS for me.
 
-  Out Variable:
-   agegr1
-
-  Rules + datatype:
+  Logic:
    agegr1 = [ADSL.AGE] between 2 and 12 is 1
    agegr1 = [ADSL.AGE] between 12 and 45 is 2
 
-  When: 
-  Missing AGE @/OUT/ is missing
-    
-  Constraint
-  AGE > 2 and AGE <=80
+  Output:
+   agegr1
 
-  Trace:
-  [ADSL.AGE]
-
-  Verify
+  Validation:
     AGE is > 0 and does not contain character values
 
-  Ambiguity
+  Notes:
    Missing AGE should be queried.
-CLOSE   
+CLOSE AGE_GRP:
+
+Final:
+Create a downloadable SAS program file
 ```
 
 ## 

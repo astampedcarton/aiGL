@@ -58,17 +58,19 @@
     },
     ":": {
       "meaning": "Indicates the end of an instruction",
-      "pattern": "(?:OPEN|CLOSE|FINAL|PURPOSE|LANGUAGE_TARGET|Input_Data|Rules|When|Out_Variable|Constraint|Trace|Verify|Ambiguity|):",
+      "pattern": "(?:OPEN|CLOSE|FINAL|PURPOSE|LANGUAGE_TARGET|Input_Data|Logic|Output|Validation|Notes|):",
       "phrases": [{"phrase" : "OPEN"           , 
+                   "pattern": "OPEN\\s+[A-Za-z][A-Za-z0-9_\\.]*:",
                    "meaning" : "Start of a specification block" ,         
-                   "semantics": "Marks the beginning of a specification block. More than one block may be defined in a single file."
+                   "semantics": "Marks the beginning of a named specification block. The supplied identifier is the unique name for the block."
                   },
                   {"phrase" : "CLOSE"          , 
+                   "pattern": "CLOSE\\s+[A-Za-z][A-Za-z0-9_\\.]*:",
                    "meaning" : "End of a specification block"   ,         
                    "semantics": "Marks the end of a specification block. More than one block may be defined in a single file."
                   },
                   {"phrase" : "FINAL"          , 
-                   "meaning" : "Final instructions after all blocks",     
+                   "meaning" : "Final execution instruction,",     
                    "semantics": "Marks the end of file and the final instruction to be executed. Only one FINAL instruction may be defined in a single file. Stop Execution after the FINAL instruction is processed. Do not process any instructions if more than one FINAL instruction is defined."
                   },
                   {"phrase" : "PURPOSE"        , 
@@ -83,38 +85,32 @@
                    "meaning" : "Input data",                              
                    "semantics": "Identifies data used as input to the specification. The data may be referenced by name or by a data object reference."
                   },
-                  {"phrase" : "Rules"          , 
+                  {"phrase" : "Logic"          , 
                    "meaning" : "Execution rules",                         
                    "semantics": "Defines logic that must be implemented in the generated output."
                   },
-                  {"phrase" : "When"           , 
-                   "meaning" : "Applicability of condition",              
-                   "semantics": "Defines conditions under which the associated instruction applies."
+                  {"phrase" : "Output"   , 
+                   "meaning" : "Variable or output to be produced by the block",    
+                   "semantics": "Identifies the variable or output to be produced or modified by the specification."
                   },
-                  {"phrase" : "Out_Variable"   , 
-                   "meaning" : "Variable to be produced by the block",    
-                   "semantics": "Identifies the variable produced or modified by the specification."
+                  {"phrase" : "Validation"     , 
+                   "meaning" : "Validation rules",                    
+                   "semantics": "Defines rules to validate the variables that are used in the logic."
                   },
-                  {"phrase" : "Constraint"     , 
-                   "meaning" : "Execution constraint",                    
-                   "semantics": "Defines requirements that the generated implementation must not violate."
-                  },
-                  {"phrase" : "Trace"          , 
-                   "meaning" : "Tracability requirements",                
-                   "semantics": "Identifies information that must be traceable to referenced specification inputs."
-                  },
-                  {"phrase" : "Verify"         , 
-                   "meaning" : "Verification requirements",               
-                   "semantics": "Defines conditions that must be checked when evaluating the resulting implementation."
-                  },
-                  {"phrase" : "Report"         , 
-                   "meaning" : "Reporting requirements",                  
-                   "semantics": "Defines conditions that must be reported on for variables. The reporting should be in the form of a report."
-                  },
-                  {"phrase" : "Ambiguity"      , 
-                   "meaning" : "Unresolved requirements",                 
-                   "semantics": "Identifies conditions that must not be resolved by assumption and must instead be reported for clarification."
+                  {"phrase" : "Notes"      , 
+                   "meaning" : "General instructions or notes for the block",                 
+                   "semantics": "Instructions of what to do in case of ambiguous, unclear or incomplete requirements or when data needs to be queried to data management."
                   }
+      ]
+    },
+    "block_validation": {
+      "rules": [
+        "Every OPEN must have a matching CLOSE.",
+        "OPEN and CLOSE block names must match.",
+        "Block names must be unique within a file.",
+        "Only one FINAL instruction may exist.",
+        "FINAL must appear after all blocks have been closed.",
+        "No instructions may appear after FINAL."
       ]
     }
   }
