@@ -9,11 +9,6 @@ Clearer instructions means less time spend talking to AI.
 
 Keep in mind that this is V0.1.
 
-## ToDo
- - [ ] A file parser (in development)
- - [ ] Test cases 
- - [ ] Need to demonstrate the benefits of aiGL over prompts
-
 ## Licensing
 Apache License 2.0.
 
