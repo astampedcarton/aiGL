@@ -1,5 +1,5 @@
   Purpose:
-   To derive the age of a person
+   Categorize age of a person
   
   Language Target:
    Write the code in SAS for me.

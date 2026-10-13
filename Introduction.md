@@ -51,7 +51,7 @@ Don't simply ignore what's written read through the results before copying the c
 
 ### Mandatory
 The following files are mandatory to be be uploaded:
-- qiGL.json - This is the language controller file.
+- aiGL.json - This is the language controller file.
 - instruction file in md or text format.
 
 ### Recommended

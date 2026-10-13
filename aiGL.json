@@ -110,6 +110,7 @@
         "Block names must be unique within a file.",
         "Only one FINAL instruction may exist.",
         "FINAL must appear after all blocks have been closed.",
+        "At least one FINAL instruction must be present.",
         "No instructions may appear after FINAL."
       ]
     }

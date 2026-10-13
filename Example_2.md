@@ -33,7 +33,7 @@ Open:
     Derive the Baseline Flag
   Language Target: Write the code in SAS for me
   Input_data:
-    ADLBq
+    ADLB
   Out_Variable : 
     ABLFL
   Rules: 
