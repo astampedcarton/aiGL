@@ -32,8 +32,8 @@ flowchart LR
 The Language/Structure setup is done only once.
 
 ## Very Important
-A very important point: aiGL is Open Source.
+aiGL is Open Source.
 
 
-## Back story for those interested
-It started on early on 1OCT2026 when the idea was born on how we communicate with AI. I've "prompted" a lot of and realised I don't like prompts, I need more. The idea started as QSE but evolved rapidly to aiGL. As a concept it evolved faster and the more I worked the more it evolved.
+## Back story for those interested and bored
+It started on early on 01OCT2026 when the idea was born on how we communicate with AI. I've "prompted" a lot of and realised I don't like prompts, I need more. The idea started as QSE but evolved rapidly to aiGL. As a concept it evolved faster and the more I worked the more it evolved.
