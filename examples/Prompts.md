@@ -1,4 +1,4 @@
-# Prompts
+# Prompts in AI usage
 
 ## Example 1
 Using the supplied language-definition file (aiGL.json) as the authoritative definition of the specification language, interpret and execute the supplied specification file (Example_2.md).
