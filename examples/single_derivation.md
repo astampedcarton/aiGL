@@ -11,7 +11,7 @@ OPEN ANL01FL_Gen:
   Output: 
     ANL01FL
   Validation: 
-    Check where a parameter does not have a ANL01FL
+    After the derivation check where a parameter does not have a ANL01FL
   Notes: 
     Create text that can be used in the ADRG
 

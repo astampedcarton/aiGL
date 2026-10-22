@@ -11,7 +11,7 @@ OPEN ANL01FL_Gen:
   Output: 
     ANL01FL
   Validation: 
-    Check where a parameter does not have a ANL01FL
+    After the derivation check where a parameter does not have a ANL01FL
   Notes: 
     Create text that can be used in the ADRG
 
@@ -31,7 +31,8 @@ OPEN ANL02FL_Gen:
   Output: 
     ANL01FL
   Validation: 
-    Check where a parameter has a AVAL but not ANRHI, a parameter has a ANRLO but no ANRHI
+    After the derivation check where a parameter has a AVAL but not ANRHI, a parameter has a ANRLO but no ANRHI.
+
   Notes: 
     Create text that can be used in the ADRG in plain English. It should not be a copy of the code. Validation code need not be included.
 
