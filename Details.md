@@ -36,26 +36,27 @@ The Language file is nothing more than a setup file on how the "Setup md file us
     ```
 - `()` - Reserved for future use
 - `<>` - Reserved for future use
-- `/xxx/` - Short codes for instructions
+- `/xxx/` - Reserved for future use
 - `#` - Reserved for future uses
+- `D:` - Can only be present in the Input_Data section. It is used to define a Document that can be referenced in the specification.
 - `:xxx:` - Is a definition description.
 
 ## Instruction File format
 The propose format is as follow:    
 Short names exists to reduce tokens and reduce typing.
              
-|Long Name         |Short Name|Description                                                |
-|---               |---       |---                                                        |
-|OPEN <>           |          | Start of a specification block followed by the block name.|
-|CLOSE <>          |          | End of a specification block followed by the block name.  |
-|FINAL             |          | Post-processing instructions                              |
-|PURPOSE           |/PU/      | Objective of the block                                    |
-|LANGUAGE_TARGET   |/LN/      | Target Language. SAS, R, Python                           |
-|Input_Data        |/ET/      | Input data                                                |
-|Logic             |/LC/      | Execution rules                                           |
-|Output            |/OT/      | Variable or output to be produced by the block            |
-|Validation        |/VL/      | Validation rules                                          |
-|Notes             |/NT/      | General instructions or notes for the block               |
+|Long Name        |Description                                                |
+|---              |---                                                        |
+|OPEN <>          | Start of a specification block followed by the block name.|
+|CLOSE <>         | End of a specification block followed by the block name.  |
+|FINAL            | Post-processing instructions                              |
+|PURPOSE          | Objective of the block                                    |
+|LANGUAGE_TARGET  | Target Language. SAS, R, Python                           |
+|Input_Data       | Input data                                                |
+|Logic            | Execution rules                                           |
+|Output           | Variable or output to be produced by the block            |
+|Validation       | Validation rules                                          |
+|Notes            | General instructions or notes for the block               |
 
 Because the file consists of information that is already present in the specifications file, it leave it open for automation.
 

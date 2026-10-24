@@ -4,42 +4,102 @@
     "{}": {
       "meaning": "Document references in the file",
       "pattern": "\\{[^{}]*\\}",
+      "semantics": "The enclosed value is interpreted as a reference to a document or data source defined in the Input_Data section. The value may be a simple identifier or a qualified reference.",
       "example": "{any value}"
     },
     "[]": {
       "meaning": "Data reference",
-      "semantics": "Identifies data objects referenced by the specification. Interpret the enclosed value according to the matching pattern.",
+      "semantics": "Identifies a dataset, variable, or dataset-qualified variable referenced by the specification. Interpret the enclosed value according to the first matching pattern.",
       "patterns": [
         {
-          "pattern": ".VARIABLE",
-          "meaning": "Variable reference",
-          "semantics": "References VARIABLE without explicitly specifying its dataset.",
-          "example": "[.AGE]"
+          "pattern": "^\\.[A-Za-z][A-Za-z0-9_]*$",
+          "meaning": "Unqualified variable reference",
+          "semantics": "References the specified variable without explicitly identifying its dataset. The dataset MUST be resolved from the current execution context.",
+          "examples": [
+            "[.AGE]",
+            "[.PARAMCD]"
+          ]
         },
         {
-          "pattern": "DATASET.",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*\\.$",
           "meaning": "Dataset reference",
-          "semantics": "References DATASET as a dataset.",          
-          "example": "[ADSL.]"
+          "semantics": "References the specified dataset as a complete data object.",
+          "examples": [
+            "[ADSL.]",
+            "[ADLB.]"
+          ]
         },
         {
-          "pattern": "DATASET.VARIABLE",
-          "meaning": "Dataset and variable reference",
-          "semantics": "References VARIABLE from DATASET.",          
-          "example": "[ADSL.AGE]"
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*\\.[A-Za-z][A-Za-z0-9_]*$",
+          "meaning": "Dataset-qualified variable reference",
+          "semantics": "References the specified variable within the explicitly identified dataset.",
+          "examples": [
+            "[ADSL.AGE]",
+            "[ADLB.PARAMCD]"
+          ]
         }
       ]
     },
     "@": {
-      "meaning": "Reference to a particular document or data source that is defined in the Input_Data section.",      
-      "pattern": "@[A-Za-z][A-Za-z0-9_]*(?:\\.[A-Za-z][A-Za-z0-9_]*)?",
+      "name": "Data Reference",
+      "meaning": "References a named document, data source, or a specific member of that source defined in the Input_Data section.",
+
+      "syntax": {
+        "form": "@Source[.Member]",
+        "pattern": "@[A-Za-z][A-Za-z0-9_]*(?:\\.[A-Za-z][A-Za-z0-9_]*)?"
+      },
+
+      "semantics": {
+        "reference_type": "read",
+        "resolution": {
+          "source": "The identifier immediately following @ MUST resolve to an entry defined in Input_Data.",
+          "member": "When a member identifier follows the source, separated by a period, it MUST resolve within the referenced source.",
+          "whole_source": "When no member is specified, the reference resolves to the complete source."
+        },
+
+        "scope": "References are resolved against Input_Data for the current specification.",
+
+        "evaluation": {
+          "timing": "The reference is resolved when the containing instruction is evaluated.",
+          "substitution": "The resolved value is supplied to the instruction in place of the reference.",
+          "mutation": "Resolving a reference does not modify the referenced source."
+        },
+
+        "constraints": [
+          "The source identifier MUST exist in Input_Data.",
+          "A member identifier MAY only be used when the referenced source exposes that member.",
+          "Source and member identifiers are case-sensitive.",
+          "A reference MUST NOT contain whitespace.",
+          "A reference MUST contain no more than one member separator."
+        ],
+
+        "errors": {
+          "undefined_source": "Raised when the source identifier is not defined in Input_Data.",
+          "undefined_member": "Raised when the requested member does not exist within the resolved source.",
+          "invalid_reference": "Raised when the reference does not conform to the defined pattern.",
+          "unavailable_source": "Raised when the source is defined but cannot be accessed."
+        }
+      },
+
       "examples": [
-        "@Library.VAR",
-        "@Library",
-        "@Var",
-        "@Document"
+        {
+          "expression": "@Library.VAR",
+          "resolves_to": "The member VAR within the Input_Data source named Library."
+        },
+        {
+          "expression": "@Library",
+          "resolves_to": "The complete Input_Data source named Library."
+        },
+        {
+          "expression": "@Var",
+          "resolves_to": "The complete Input_Data source named Var."
+        },
+        {
+          "expression": "@Document",
+          "resolves_to": "The complete Input_Data source named Document."
+        }
       ]
-    },
+    },    
     "()": {
       "meaning": "Reserved for future use"
     },
@@ -50,6 +110,7 @@
     },
     "D:": {
       "meaning": "Can only be present in the Input_Data section. It is used to define a Document that can be referenced in the specification.",
+      "semantics": "The value following D: is interpreted as a document name or identifier. This document can be referenced later in the specification using the @ symbol.",
       "pattern": "D:/[A-Za-z0-9]",
       "example": "D: Document_Name"
     },    
