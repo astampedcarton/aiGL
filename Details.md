@@ -1,6 +1,6 @@
 # Details (aiGL) 
 ![alt text](Designer-1.png)
-Here's more details on how it all fits together.
+Here's more details on how it all fits together. Keep in mind that this is an experimental language. The idea is to have a solid core before moving forward.
 
 ## Flow Chart
 A more detailed look at how the proposed method will work.
@@ -19,6 +19,31 @@ flowchart LR
   i-->A[AI]
   i1-->A
 ```
+
+aiGL.json is the CORE. Sematic details are to be kept to an minimum.
+
+### Language setup
+This portion is still in development. aiGL is the core language file. Business rules are currently part of it but will be moved out to form the following:
+
+```mermaid
+flowchart LR
+ l(CORE)--> P(Profile)
+ P--> B(Business rules) --> etc.
+```
+This approach will allow the language to remain stable but the reach to extent beyond it.
+
+The initial aim is to have the following:
+```
+aiGL/
+├─ core/
+│  └─ aiGL.json
+├─ profiles/
+│  ├─ clinical-programming.json
+│  ├─ data-engineering.json
+│  └─ reporting.json
+└─ examples/
+```
+One open question is if the json would remain.
 
 ## Language file
 The Language file is nothing more than a setup file on how the "Setup md file used by AI" should be interpreted. 
