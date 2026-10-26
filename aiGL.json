@@ -43,7 +43,6 @@
     "@": {
       "name": "Data Reference",
       "meaning": "References a named document, data source, or a specific member of that source defined in the Input_Data section.",
-
       "syntax": {
         "form": "@Source[.Member]",
         "pattern": "@[A-Za-z][A-Za-z0-9_]*(?:\\.[A-Za-z][A-Za-z0-9_]*)?"
@@ -104,15 +103,20 @@
       "meaning": "Reserved for future use"
     },
     "/xx/": {
-      "meaning": "Short codes for instructions",
+      "meaning": "Short codes for instructions - used to identify specific actions or parameters within the specification.",
       "pattern": "/[A-Za-z0-9]{2}/",
       "example": "/AB/"
     },
     "D:": {
       "meaning": "Can only be present in the Input_Data section. It is used to define a Document that can be referenced in the specification.",
-      "semantics": "The value following D: is interpreted as a document name or identifier. This document can be referenced later in the specification using the @ symbol.",
+      "semantics": ["The value following D: identifies a document available to the specification.",
+                    "Documents may contain metadata, derivation standards, controlled terminology, or implementation guidance.",
+                    "If a referenced document contains metadata definitions, those definitions become available for validation.",
+                    "Variables referenced in Logic, Validation, Output, or FINAL instructions must exist in at least one applicable metadata source when such metadata is supplied.",
+                    "A variable reference that cannot be resolved against supplied metadata must raise a validation error."
+  ],
       "pattern": "D:/[A-Za-z0-9]",
-      "example": "D: Document_Name"
+      "example": "D:Document_Name"
     },    
     "#": {
       "meaning": "Reserved for future use"
@@ -146,7 +150,7 @@
                   },
                   {"phrase" : "LANGUAGE_TARGET", 
                    "meaning" : "Target Language. SAS, R, Python",         
-                   "semantics": "Defines the language in which the executable output must be generated. There can be only one LANGUAGE_TARGET instruction in a single specification block."
+                   "semantics": "Defines the language in which the executable output must be generated. There can be only one LANGUAGE_TARGET instruction in a single specification block. LANGEUAGE_TARGET is not optional. If not specified, the default target language is SAS additionally the target language must be the same for all blocks in a single specification file."
                   },
                   {"phrase" : "Input_Data"     , 
                    "meaning" : "Input data",                              
@@ -166,7 +170,12 @@
                   },
                   {"phrase" : "Notes"      , 
                    "meaning" : "General instructions or notes for the block",                 
-                   "semantics": "Instructions of what to do in case of ambiguous, unclear or incomplete requirements or when data needs to be queried to data management."
+                   "semantics": ["Instructions of what to do in case of ambiguous, unclear or incomplete requirements or when data needs to be queried to data management.",
+                       "When Notes contains instructions to generate ADRG text, the ADRG output must describe only the implemented derivation logic.",
+                      "Validation checks, execution errors, specification issues, warnings, assumptions, and implementation diagnostics must not be included in ADRG text unless explicitly requested.",
+                      "ADRG text must be generated independently of validation reporting."
+                  ]
+                 
                   }
       ]
     },
