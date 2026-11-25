@@ -1,3 +1,6 @@
+25NOV2026
+Development has been slow due some personal challenges. Instead of delaying any further. I've thrown the doors open.
+
 # aiGL
 <img width="900" height="900" alt="Designer" src="https://github.com/user-attachments/assets/07c9482b-e4a1-4fe7-ae57-d19366373f47" />
 
